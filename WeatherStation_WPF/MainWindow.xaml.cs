@@ -60,7 +60,10 @@ namespace WeatherStation_WPF
 
         private void DataChartWindow_Click(object sender, RoutedEventArgs e)
         {
+            Window DataChart = new DataChartWindow();
+            DataChart.Show();
 
+            this.Close();
         }
 
         private void AppExit_Click(object sender, RoutedEventArgs e)
