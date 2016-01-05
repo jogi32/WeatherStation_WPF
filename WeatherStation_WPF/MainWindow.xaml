@@ -4,8 +4,10 @@
         Title="MainWindow" Height="350" Width="525">
 
     <Window.Background>
-        <ImageBrush ImageSource="chmury.jpg"></ImageBrush>
+        <ImageBrush ImageSource="additional/chmury.jpg"></ImageBrush>
     </Window.Background>
+    
+    
     <Window.Resources>
 
 
@@ -114,7 +116,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="320.8" />
+            <RowDefinition Height="320" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="358*" />

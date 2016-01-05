@@ -23,9 +23,16 @@ namespace WeatherStation_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        Window DataChart;
+
         public MainWindow()
         {
             InitializeComponent();
+            //this.Hide();
+
+            DataChart = new DataChartWindow();
+            DataChart.Show();
+
         }
 
         private void But_Bt_Stop_Click(object sender, RoutedEventArgs e)
@@ -60,7 +67,7 @@ namespace WeatherStation_WPF
 
         private void DataChartWindow_Click(object sender, RoutedEventArgs e)
         {
-            Window DataChart = new DataChartWindow();
+            DataChart = new DataChartWindow();
             DataChart.Show();
 
             this.Close();
