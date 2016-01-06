@@ -24,6 +24,7 @@ namespace WeatherStation_WPF
     public partial class MainWindow : Window
     {
         Window DataChart;
+        SerialPortController test;
 
         public MainWindow()
         {
@@ -32,7 +33,7 @@ namespace WeatherStation_WPF
 
             DataChart = new DataChartWindow();
             DataChart.Show();
-
+            test = new SerialPortController();
         }
 
         private void But_Bt_Stop_Click(object sender, RoutedEventArgs e)
