@@ -19,7 +19,15 @@ namespace WeatherStation_WPF
             
             serialPort1.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
             serialPort1.ReadTimeout = 50;
-            serialPort1.Open();
+            try
+            {
+                //serialPort1.Open();
+            }
+            catch
+            {
+
+            }
+            
 
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(2);

@@ -24,6 +24,8 @@ namespace WeatherStation_WPF
     public partial class MainWindow : Window
     {
         Window DataChart;
+        Window DataGraph;
+        Window DataGraphOxyPlot;
         SerialPortController test;
 
         public MainWindow()
@@ -32,6 +34,8 @@ namespace WeatherStation_WPF
             //this.Hide();
 
             DataChart = new DataChartWindow();
+            DataGraph = new DataGraphWindow();
+            DataGraph.Show();
             DataChart.Show();
             test = new SerialPortController();
         }
