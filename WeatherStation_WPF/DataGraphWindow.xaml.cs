@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Controls.DataVisualization.Charting;
-
-using ClassLibrary1.Collections.Generic;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
+using System.Windows.Threading;
 
 namespace WeatherStation_WPF
 {
@@ -27,88 +27,32 @@ namespace WeatherStation_WPF
     /// <summary>
     /// Interaction logic for DataGraphWindow.xaml
     /// </summary>
-    public partial class DataGraphWindow : Window, INotifyPropertyChanged
+    public partial class DataGraphWindow : Window
     {
-        Random rnd = new Random();
-       
+        ObservableCollection<KeyValuePair<double, double>> Power = new ObservableCollection<KeyValuePair<double, double>>();
+
         public DataGraphWindow()
         {
             InitializeComponent();
+            showColumnChart();
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 1);  // per 5 seconds, you could change it
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.IsEnabled = true;
         }
 
-        private void mcChart_Loaded(object sender, RoutedEventArgs e)
+        double i = 5;
+        Random random = new Random(DateTime.Now.Millisecond);
+        void timer_Tick(object sender, EventArgs e)
         {
-            ZaladujDane();
+            Power.Add(new KeyValuePair<double, double>(i, random.NextDouble()));
+            i += 1;
         }
 
-        //Dane String i Int (Odpowiadajace wartościom CHART w XAML
-        //     IndependentValueBinding="{Binding Path=Key}"
-        //     DependentValueBinding="{Binding Path=Value}">
-        private void ZaladujDane()
+        private void showColumnChart()
         {
-            ((LineSeries)mcChart.Series[0]).ItemsSource =
-            new KeyValuePair<string, int>[]{
-            new KeyValuePair<string,int>("Google", 90),
-            new KeyValuePair<string,int>("WP", 3),
-            new KeyValuePair<string,int>("Netsprint", 2),
-            new KeyValuePair<string,int>("Onet", 2),
-            new KeyValuePair<string,int>("Interia", 1),
-            new KeyValuePair<string,int>("MSN", 2) };
+            TemperatureChart.DataContext = Power;
         }
-
-        public void InitMemoryWatch()
-        {
-            // keep 60 seconds worth of memory by default
-            const int memorySamples = 60;
-            MemoryStats = new RingBuffer<MemorySample>(memorySamples);
-
-            var dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-            dispatcherTimer.Tick += DispatcherTimerTick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
-            dispatcherTimer.Start();
-        }
-
-        private void DispatcherTimerTick(object sender, EventArgs e)
-        {
-            LatestMemorySample = new MemorySample
-            {
-                ByteCount = rnd.Next(1, 13), // creates a number between 1 and 12//GC.GetTotalMemory(false),
-                Timestamp = DateTime.Now
-            };
-            _memoryStats.Add(LatestMemorySample);
-        }
-
-        private RingBuffer<MemorySample> _memoryStats;
-        public RingBuffer<MemorySample> MemoryStats
-        {
-            get { return _memoryStats; }
-            set
-            {
-                _memoryStats = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("MemoryStats"));
-                }
-            }
-        }
-        private MemorySample _latestMemorySample;
-        public MemorySample LatestMemorySample
-        {
-            get { return _latestMemorySample; }
-            set
-            {
-                _latestMemorySample = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("LatestMemorySample"));
-                }
-            }
-        }
-
-        #region INotifyPropertyChanged Interface
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        #endregion
     }
 }
