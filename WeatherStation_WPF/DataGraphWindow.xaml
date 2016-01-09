@@ -85,7 +85,7 @@
         </chartingToolkit:Chart>
 
 
-        <chartingToolkit:Chart Name="Radiance" Title="Radiance" Background="YellowGreen" Grid.Column="1" Grid.Row="1"
+        <chartingToolkit:Chart Name="RadianceChart" Title="Radiance" Background="YellowGreen" Grid.Column="1" Grid.Row="1"
                              Foreground="DarkBlue" VerticalAlignment="Center" HorizontalAlignment="Center"  IsEnabled="True" Width="397" Height="226" >
             <charting:Chart.LegendStyle>
                 <Style TargetType="datavis:Legend">

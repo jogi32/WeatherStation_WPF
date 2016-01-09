@@ -21,19 +21,12 @@ namespace WeatherStation_WPF
             serialPort1.ReadTimeout = 50;
             try
             {
-                serialPort1.Open();
+                //serialPort1.Open();
             }
             catch
             {
 
             }
-            
-            /*
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(2);
-            timer.Tick += timer_Tick;
-            timer.Start();
-             * */
         }
 
         ~SerialPortController()
@@ -58,13 +51,6 @@ namespace WeatherStation_WPF
                 return instance;
             }
         }
-        /*
-        void timer_Tick(object sender, EventArgs e)
-        {
-            if (serialPort1.IsOpen)
-                serialPort1.DiscardInBuffer();
-        }
-        */
 
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
@@ -101,10 +87,10 @@ namespace WeatherStation_WPF
             catch { }
             try
             {
-                DataHolder.i_radianceRaceived = Double.Parse(sp.ReadTo(" "));
+                DataHolder.i_radianceRaceived = UInt64.Parse(sp.ReadTo(" "));
                 DataHolder.i_radianceHight = UInt32.Parse(sp.ReadTo(","));
                 DataHolder.i_radianceLow = UInt32.Parse(sp.ReadTo(" "));
-                DataHolder.i_radianceCalculated = (DataHolder.i_radianceHight << 8) + DataHolder.i_radianceLow;
+                DataHolder.i_radianceCalculated = Convert.ToUInt64(((DataHolder.i_radianceHight << 8) + DataHolder.i_radianceLow) / 1.2);
             }
             catch { }
             try

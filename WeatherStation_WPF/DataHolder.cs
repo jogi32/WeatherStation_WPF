@@ -16,14 +16,14 @@ namespace WeatherStation_WPF
         public static double i_humidityAir { get; set; }
         public static double i_humidityEarth { get; set; }
         public static double i_humidityRain { get; set; }
-        public static double i_radianceRaceived { get; set; }
+        public static UInt64 i_radianceRaceived { get; set; }
         public static UInt32 i_radianceHight { get; set; }
         public static UInt32 i_radianceLow { get; set; }
-        public static double i_radianceCalculated { get; set; }
+        public static UInt64 i_radianceCalculated { get; set; }
         public static UInt32 i_pressureHight { get; set; }
         public static UInt32 i_pressureLow { get; set; }
-        public static double i_pressureCalculated { get; set; }
-        public static double i_heightCalculated { get; set; }
+        public static UInt64 i_pressureCalculated { get; set; }
+        public static UInt64 i_heightCalculated { get; set; }
 
 
         public DataHolder() 

@@ -25,7 +25,7 @@ namespace WeatherStation_WPF
             InitializeComponent();
 
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 1);  // per 1 seconds,
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 500);  // per 1 seconds,
             timer.Tick += new EventHandler(timer_Tick);
             timer.IsEnabled = true;
         }
