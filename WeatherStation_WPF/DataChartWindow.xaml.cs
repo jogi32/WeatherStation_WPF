@@ -43,6 +43,33 @@ namespace WeatherStation_WPF
             Lux.Content = DataHolder.i_radianceCalculated.ToString();
             Height1.Content = DataHolder.i_heightCalculated.ToString();
             Pressure.Content = DataHolder.i_pressureCalculated.ToString();
+
+            if ( DataHolder.i_temperatureAlarm)
+            {
+                Alarm_Temp.Fill = new SolidColorBrush(Colors.Red);
+            }
+            else
+            {
+                Alarm_Temp.Fill = new SolidColorBrush(Colors.Green);
+            }
+
+            if (DataHolder.i_humidityAlarm)
+            {
+                Alarm_Hum.Fill = new SolidColorBrush(Colors.Red);
+            }
+            else
+            {
+                Alarm_Hum.Fill = new SolidColorBrush(Colors.Green);
+            }
+
+            if (DataHolder.i_otherAlarm)
+            {
+                Alarm_Other.Fill = new SolidColorBrush(Colors.Red);
+            }
+            else
+            {
+                Alarm_Other.Fill = new SolidColorBrush(Colors.Green);
+            }
         }
     }
 }

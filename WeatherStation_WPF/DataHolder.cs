@@ -23,6 +23,10 @@ namespace WeatherStation_WPF
         public static UInt64 i_pressureCalculated { get; set; }
         public static UInt64 i_heightCalculated { get; set; }
 
+        public static Boolean i_temperatureAlarm { get; set; }
+        public static Boolean i_humidityAlarm { get; set; }
+        public static Boolean i_otherAlarm { get; set; }
+
 
         public DataHolder() 
         {

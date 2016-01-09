@@ -50,49 +50,57 @@ namespace WeatherStation_WPF
             try
             {
                 DataHolder.i_temperature1 = Double.Parse(sp.ReadTo(" "));
+                DataHolder.i_temperatureAlarm = false;
             }
-            catch { }
+            catch { DataHolder.i_temperatureAlarm = true; }
             try
             {
                 DataHolder.i_temperature2 = Double.Parse(sp.ReadTo(" ")) / 10;
+                DataHolder.i_temperatureAlarm = false;
             }
-            catch { }
+            catch { DataHolder.i_temperatureAlarm = true; }
             try
             {
                 DataHolder.i_humidityAir = Double.Parse(sp.ReadTo(" ")) / 10;
+                DataHolder.i_humidityAlarm = false;
             }
-            catch { }
+            catch { DataHolder.i_humidityAlarm = true; }
             try
             {
                 DataHolder.i_humidityEarth = (1023 - Double.Parse(sp.ReadTo(" "))) / 100;
+                DataHolder.i_humidityAlarm = false;
             }
-            catch { }
+            catch { DataHolder.i_humidityAlarm = true;  }
             try
             {
                 DataHolder.i_humidityRain = (1023 - Double.Parse(sp.ReadTo(" "))) / 100;
+                DataHolder.i_humidityAlarm = false;
             }
-            catch { }
+            catch { DataHolder.i_humidityAlarm = true;  }
             try
             {
                 DataHolder.i_radianceRaceived = UInt64.Parse(sp.ReadTo(" "));
                 DataHolder.i_radianceHight = UInt32.Parse(sp.ReadTo(","));
                 DataHolder.i_radianceLow = UInt32.Parse(sp.ReadTo(" "));
                 DataHolder.i_radianceCalculated = Convert.ToUInt64(((DataHolder.i_radianceHight << 8) + DataHolder.i_radianceLow) / 1.2);
+                DataHolder.i_otherAlarm = false;
             }
-            catch { }
+            catch { DataHolder.i_otherAlarm = true; }
             try
             {
                 DataHolder.i_temperature3 = Double.Parse(sp.ReadTo(" ")) / 10;
+                DataHolder.i_temperatureAlarm = false;
             }
-            catch { }
+            catch { DataHolder.i_temperatureAlarm = true; }
             try
             {
                 DataHolder.i_pressureHight = UInt32.Parse(sp.ReadTo(" "));
                 sp.ReadTo(" ");
                 DataHolder.i_pressureLow = UInt32.Parse(sp.ReadTo(" "));
                 DataHolder.i_pressureCalculated = ((DataHolder.i_pressureHight << 8) + DataHolder.i_pressureLow)/100;
+                DataHolder.i_otherAlarm = false;
             }
-            catch { }
+            catch { DataHolder.i_otherAlarm = true; }
             
             sp.DiscardInBuffer();
         }
