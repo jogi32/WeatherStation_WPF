@@ -8,8 +8,6 @@ namespace WeatherStation_WPF
 {
     class DataHolder
     {
-        private static DataHolder instance;
-
         public static double i_temperature1 { get; set; }
         public static double i_temperature2 { get; set; }
         public static double i_temperature3 { get; set; }
@@ -32,18 +30,6 @@ namespace WeatherStation_WPF
 
         ~DataHolder()
         {
-        }
-
-        public static DataHolder Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new DataHolder();
-                }
-                return instance;
-            }
         }
     }
 }

@@ -11,7 +11,6 @@ namespace WeatherStation_WPF
 {
     class SerialPortController
     {
-        private static SerialPortController instance;
         static SerialPort serialPort1 = new SerialPort("COM5", 9600);
 
         public SerialPortController() 
@@ -38,18 +37,6 @@ namespace WeatherStation_WPF
                     serialPort1.Close();
                 }
             }   
-        }
-
-        public static SerialPortController Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new SerialPortController();
-                }
-                return instance;
-            }
         }
 
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
@@ -106,7 +93,6 @@ namespace WeatherStation_WPF
             }
             catch { }
             
-
             sp.DiscardInBuffer();
         }
     }

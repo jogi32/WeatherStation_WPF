@@ -18,9 +18,6 @@ using System.Windows.Controls.DataVisualization.Charting;
 
 namespace WeatherStation_WPF
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         Window DataChart;
@@ -30,7 +27,6 @@ namespace WeatherStation_WPF
         public MainWindow()
         {
             InitializeComponent();
-            //this.Hide();
 
             DataChart = new DataChartWindow();
             DataGraph = new DataGraphWindow();

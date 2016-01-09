@@ -76,7 +76,6 @@
       <DependentUpon>DataGraphWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataHolder.cs" />
-    <Compile Include="RingBuffer.cs" />
     <Compile Include="SerialPortController.cs" />
     <Page Include="DataChartWindow.xaml">
       <SubType>Designer</SubType>

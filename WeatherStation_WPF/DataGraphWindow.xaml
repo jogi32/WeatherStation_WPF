@@ -19,7 +19,8 @@
         </Grid.ColumnDefinitions>
 
         <chartingToolkit:Chart Name="TemperatureChart" Title="Temperature" Background="YellowGreen" Grid.Column="0" Grid.Row="0"
-                             Foreground="DarkBlue" VerticalAlignment="Center" HorizontalAlignment="Center"  IsEnabled="True" Width="397" Height="226" >
+                                Foreground="DarkBlue" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  IsEnabled="True"
+                                Width="Auto" Height="Auto">
             <charting:Chart.LegendStyle>
                 <Style TargetType="datavis:Legend">
                     <Setter Property="Width" Value="0" />
@@ -31,17 +32,18 @@
                                     IndependentValueBinding="{Binding Path=Key}"
                                     IsSelectionEnabled="True">
                 <chartingToolkit:AreaSeries.IndependentAxis>
-                    <chartingToolkit:LinearAxis Orientation="X" Title="Time (s)" Interval="10"  />
+                    <chartingToolkit:LinearAxis Orientation="X" Title="Time (s)" Interval="10" Minimum="0" Maximum="60" />
                 </chartingToolkit:AreaSeries.IndependentAxis>
                 <chartingToolkit:AreaSeries.DependentRangeAxis>
-                    <chartingToolkit:LinearAxis Orientation="Y" Title="Temperature (C)" Minimum="0" Maximum="40"/>
+                    <chartingToolkit:LinearAxis Orientation="Y" Title="Temperature (C)" Minimum="-10" Maximum="40"/>
                 </chartingToolkit:AreaSeries.DependentRangeAxis>
             </chartingToolkit:AreaSeries>
         </chartingToolkit:Chart>
 
 
         <chartingToolkit:Chart Name="PressureChart" Title="Pressure" Background="YellowGreen" Grid.Column="1" Grid.Row="0"
-                             Foreground="DarkBlue" VerticalAlignment="Center" HorizontalAlignment="Center"  IsEnabled="True" Width="397" Height="226" >
+                             Foreground="DarkBlue" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  IsEnabled="True"
+                                Width="Auto" Height="Auto">
             <charting:Chart.LegendStyle>
                 <Style TargetType="datavis:Legend">
                     <Setter Property="Width" Value="0" />
@@ -53,10 +55,10 @@
                                     IndependentValueBinding="{Binding Path=Key}"
                                     IsSelectionEnabled="True">
                 <chartingToolkit:AreaSeries.IndependentAxis>
-                    <chartingToolkit:LinearAxis Orientation="X" Title="Time (s)" Interval="10"  />
+                    <chartingToolkit:LinearAxis Orientation="X" Title="Time (s)" Interval="10" Minimum="0" Maximum="60"/>
                 </chartingToolkit:AreaSeries.IndependentAxis>
                 <chartingToolkit:AreaSeries.DependentRangeAxis>
-                    <chartingToolkit:LinearAxis Orientation="Y" Title="Temperature (C)"/>
+                    <chartingToolkit:LinearAxis Orientation="Y" Title="TCiśnienie (hPa)" Minimum="900" Maximum="1100"/>
                 </chartingToolkit:AreaSeries.DependentRangeAxis>
             </chartingToolkit:AreaSeries>
         </chartingToolkit:Chart>
@@ -64,7 +66,8 @@
 
 
         <chartingToolkit:Chart Name="HumidityChart" Title="Humidity" Background="YellowGreen" Grid.Column="0" Grid.Row="1"
-                             Foreground="DarkBlue" VerticalAlignment="Center" HorizontalAlignment="Center"  IsEnabled="True" Width="397" Height="226" >
+                             Foreground="DarkBlue" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  IsEnabled="True"
+                                Width="Auto" Height="Auto">
             <charting:Chart.LegendStyle>
                 <Style TargetType="datavis:Legend">
                     <Setter Property="Width" Value="0" />
@@ -76,17 +79,18 @@
                                     IndependentValueBinding="{Binding Path=Key}"
                                     IsSelectionEnabled="True">
                 <chartingToolkit:AreaSeries.IndependentAxis>
-                    <chartingToolkit:LinearAxis Orientation="X" Title="Time (s)" Interval="10"  />
+                    <chartingToolkit:LinearAxis Orientation="X" Title="Time (s)" Interval="10" Minimum="0" Maximum="60" />
                 </chartingToolkit:AreaSeries.IndependentAxis>
                 <chartingToolkit:AreaSeries.DependentRangeAxis>
-                    <chartingToolkit:LinearAxis Orientation="Y" Title="Temperature (C)"/>
+                    <chartingToolkit:LinearAxis Orientation="Y" Title="Humidity (%)" Minimum="0" Maximum="100"/>
                 </chartingToolkit:AreaSeries.DependentRangeAxis>
             </chartingToolkit:AreaSeries>
         </chartingToolkit:Chart>
 
 
         <chartingToolkit:Chart Name="RadianceChart" Title="Radiance" Background="YellowGreen" Grid.Column="1" Grid.Row="1"
-                             Foreground="DarkBlue" VerticalAlignment="Center" HorizontalAlignment="Center"  IsEnabled="True" Width="397" Height="226" >
+                             Foreground="DarkBlue" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  IsEnabled="True"
+                                Width="Auto" Height="Auto">
             <charting:Chart.LegendStyle>
                 <Style TargetType="datavis:Legend">
                     <Setter Property="Width" Value="0" />
@@ -98,10 +102,10 @@
                                     IndependentValueBinding="{Binding Path=Key}"
                                     IsSelectionEnabled="True">
                 <chartingToolkit:AreaSeries.IndependentAxis>
-                    <chartingToolkit:LinearAxis Orientation="X" Title="Time (s)" Interval="10"  />
+                    <chartingToolkit:LinearAxis Orientation="X" Title="Time (s)" Interval="10" Minimum="0" Maximum="60" />
                 </chartingToolkit:AreaSeries.IndependentAxis>
                 <chartingToolkit:AreaSeries.DependentRangeAxis>
-                    <chartingToolkit:LinearAxis Orientation="Y" Title="Temperature (C)"/>
+                    <chartingToolkit:LinearAxis Orientation="Y" Title="Radiance (Lux)" Minimum="0" Maximum="60000"/>
                 </chartingToolkit:AreaSeries.DependentRangeAxis>
             </chartingToolkit:AreaSeries>
         </chartingToolkit:Chart>
