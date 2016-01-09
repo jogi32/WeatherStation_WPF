@@ -20,7 +20,7 @@ namespace WeatherStation_WPF
             serialPort1.ReadTimeout = 50;
             try
             {
-                //serialPort1.Open();
+                serialPort1.Open();
             }
             catch
             {
@@ -88,8 +88,9 @@ namespace WeatherStation_WPF
             try
             {
                 DataHolder.i_pressureHight = UInt32.Parse(sp.ReadTo(" "));
+                sp.ReadTo(" ");
                 DataHolder.i_pressureLow = UInt32.Parse(sp.ReadTo(" "));
-                DataHolder.i_pressureCalculated = (DataHolder.i_pressureHight << 8) + DataHolder.i_pressureLow;
+                DataHolder.i_pressureCalculated = ((DataHolder.i_pressureHight << 8) + DataHolder.i_pressureLow)/100;
             }
             catch { }
             

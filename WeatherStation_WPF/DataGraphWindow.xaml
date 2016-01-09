@@ -105,7 +105,7 @@
                     <chartingToolkit:LinearAxis Orientation="X" Title="Time (s)" Interval="10" Minimum="0" Maximum="60" />
                 </chartingToolkit:AreaSeries.IndependentAxis>
                 <chartingToolkit:AreaSeries.DependentRangeAxis>
-                    <chartingToolkit:LinearAxis Orientation="Y" Title="Radiance (Lux)" Minimum="0" Maximum="60000"/>
+                    <chartingToolkit:LinearAxis Orientation="Y" Title="Radiance (Lux)" Minimum="0" Maximum="1000"/>
                 </chartingToolkit:AreaSeries.DependentRangeAxis>
             </chartingToolkit:AreaSeries>
         </chartingToolkit:Chart>
