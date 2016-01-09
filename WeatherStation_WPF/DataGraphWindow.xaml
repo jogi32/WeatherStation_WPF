@@ -4,7 +4,10 @@
         xmlns:DV="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
         xmlns:DVC="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
         Title="DataLogger" Height="480" Width="800"
-        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit">
+        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        xmlns:charting="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        xmlns:datavis="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        xmlns:chartingprimitives="clr-namespace:System.Windows.Controls.DataVisualization.Charting.Primitives;assembly=System.Windows.Controls.DataVisualization.Toolkit">
     <Grid Background="#FFB7BB12">
         <Grid.RowDefinitions>
             <RowDefinition Height="100*" />
@@ -17,6 +20,33 @@
 
         <chartingToolkit:Chart Name="TemperatureChart" Title="Temperature" Background="YellowGreen" Grid.Column="0" Grid.Row="0"
                              Foreground="DarkBlue" VerticalAlignment="Center" HorizontalAlignment="Center"  IsEnabled="True" Width="397" Height="226" >
+            <charting:Chart.LegendStyle>
+                <Style TargetType="datavis:Legend">
+                    <Setter Property="Width" Value="0" />
+                </Style>
+            </charting:Chart.LegendStyle>
+            <chartingToolkit:AreaSeries Grid.Column="0" Grid.Row="0"
+                                    ItemsSource="{Binding}" 
+                                    DependentValueBinding="{Binding Path=Value}" 
+                                    IndependentValueBinding="{Binding Path=Key}"
+                                    IsSelectionEnabled="True">
+                <chartingToolkit:AreaSeries.IndependentAxis>
+                    <chartingToolkit:LinearAxis Orientation="X" Title="Time (s)" Interval="10"  />
+                </chartingToolkit:AreaSeries.IndependentAxis>
+                <chartingToolkit:AreaSeries.DependentRangeAxis>
+                    <chartingToolkit:LinearAxis Orientation="Y" Title="Temperature (C)" Minimum="0" Maximum="40"/>
+                </chartingToolkit:AreaSeries.DependentRangeAxis>
+            </chartingToolkit:AreaSeries>
+        </chartingToolkit:Chart>
+
+
+        <chartingToolkit:Chart Name="PressureChart" Title="Pressure" Background="YellowGreen" Grid.Column="1" Grid.Row="0"
+                             Foreground="DarkBlue" VerticalAlignment="Center" HorizontalAlignment="Center"  IsEnabled="True" Width="397" Height="226" >
+            <charting:Chart.LegendStyle>
+                <Style TargetType="datavis:Legend">
+                    <Setter Property="Width" Value="0" />
+                </Style>
+            </charting:Chart.LegendStyle>
             <chartingToolkit:AreaSeries Grid.Column="0" Grid.Row="0"
                                     ItemsSource="{Binding}" 
                                     DependentValueBinding="{Binding Path=Value}" 
@@ -32,8 +62,36 @@
         </chartingToolkit:Chart>
 
 
-        <chartingToolkit:Chart Name="HumidityChart" Title="Humidity" Background="YellowGreen" Grid.Column="1" Grid.Row="0"
+
+        <chartingToolkit:Chart Name="HumidityChart" Title="Humidity" Background="YellowGreen" Grid.Column="0" Grid.Row="1"
                              Foreground="DarkBlue" VerticalAlignment="Center" HorizontalAlignment="Center"  IsEnabled="True" Width="397" Height="226" >
+            <charting:Chart.LegendStyle>
+                <Style TargetType="datavis:Legend">
+                    <Setter Property="Width" Value="0" />
+                </Style>
+            </charting:Chart.LegendStyle>
+            <chartingToolkit:AreaSeries Grid.Column="0" Grid.Row="0"
+                                    ItemsSource="{Binding}" 
+                                    DependentValueBinding="{Binding Path=Value}" 
+                                    IndependentValueBinding="{Binding Path=Key}"
+                                    IsSelectionEnabled="True">
+                <chartingToolkit:AreaSeries.IndependentAxis>
+                    <chartingToolkit:LinearAxis Orientation="X" Title="Time (s)" Interval="10"  />
+                </chartingToolkit:AreaSeries.IndependentAxis>
+                <chartingToolkit:AreaSeries.DependentRangeAxis>
+                    <chartingToolkit:LinearAxis Orientation="Y" Title="Temperature (C)"/>
+                </chartingToolkit:AreaSeries.DependentRangeAxis>
+            </chartingToolkit:AreaSeries>
+        </chartingToolkit:Chart>
+
+
+        <chartingToolkit:Chart Name="Radiance" Title="Radiance" Background="YellowGreen" Grid.Column="1" Grid.Row="1"
+                             Foreground="DarkBlue" VerticalAlignment="Center" HorizontalAlignment="Center"  IsEnabled="True" Width="397" Height="226" >
+            <charting:Chart.LegendStyle>
+                <Style TargetType="datavis:Legend">
+                    <Setter Property="Width" Value="0" />
+                </Style>
+            </charting:Chart.LegendStyle>
             <chartingToolkit:AreaSeries Grid.Column="0" Grid.Row="0"
                                     ItemsSource="{Binding}" 
                                     DependentValueBinding="{Binding Path=Value}" 

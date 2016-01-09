@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace WeatherStation_WPF
 {
@@ -22,6 +23,26 @@ namespace WeatherStation_WPF
         public DataChartWindow()
         {
             InitializeComponent();
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 1);  // per 1 seconds,
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.IsEnabled = true;
+        }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            Temp1.Content = DataHolder.i_temperature1.ToString();
+            Temp2.Content = DataHolder.i_temperature2.ToString();
+            Temp3.Content = DataHolder.i_temperature3.ToString();
+
+            HumAir.Content = DataHolder.i_humidityAir.ToString();
+            HumEarth.Content = DataHolder.i_humidityEarth.ToString();
+            HumRain.Content = DataHolder.i_humidityRain.ToString();
+
+            Lux.Content = DataHolder.i_radianceCalculated.ToString();
+            Height1.Content = DataHolder.i_heightCalculated.ToString();
+            Pressure.Content = DataHolder.i_pressureCalculated.ToString();
         }
     }
 }

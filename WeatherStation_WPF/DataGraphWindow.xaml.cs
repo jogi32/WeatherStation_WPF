@@ -20,7 +20,7 @@ namespace WeatherStation_WPF
 {
     public class MemorySample
     {
-        public long ByteCount { get; set; }
+        public UInt32 Data { get; set; }
         public DateTime Timestamp { get; set; }
     }
 
@@ -29,30 +29,29 @@ namespace WeatherStation_WPF
     /// </summary>
     public partial class DataGraphWindow : Window
     {
-        ObservableCollection<KeyValuePair<double, double>> Power = new ObservableCollection<KeyValuePair<double, double>>();
+        ObservableCollection<KeyValuePair<Int32, double>> Temperature = new ObservableCollection<KeyValuePair<Int32, double>>();
+        DataHolder dataHolder = new DataHolder();
 
         public DataGraphWindow()
         {
             InitializeComponent();
-            showColumnChart();
+            showDataChart();
 
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 1);  // per 5 seconds, you could change it
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 500);  // per 5 seconds, you could change it
             timer.Tick += new EventHandler(timer_Tick);
             timer.IsEnabled = true;
         }
 
-        double i = 5;
         Random random = new Random(DateTime.Now.Millisecond);
         void timer_Tick(object sender, EventArgs e)
         {
-            Power.Add(new KeyValuePair<double, double>(i, random.NextDouble()));
-            i += 1;
+            Temperature.Add(new KeyValuePair<Int32, double>(DateTime.Now.Second, DataHolder.i_temperature1));
         }
 
-        private void showColumnChart()
+        private void showDataChart()
         {
-            TemperatureChart.DataContext = Power;
+            TemperatureChart.DataContext = Temperature;
         }
     }
 }

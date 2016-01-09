@@ -25,7 +25,6 @@ namespace WeatherStation_WPF
     {
         Window DataChart;
         Window DataGraph;
-        Window DataGraphOxyPlot;
         SerialPortController test;
 
         public MainWindow()

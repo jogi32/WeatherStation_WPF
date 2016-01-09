@@ -23,9 +23,10 @@ namespace WeatherStation_WPF
         public static UInt32 i_pressureHight { get; set; }
         public static UInt32 i_pressureLow { get; set; }
         public static double i_pressureCalculated { get; set; }
+        public static double i_heightCalculated { get; set; }
 
 
-        private DataHolder() 
+        public DataHolder() 
         {
         }
 
