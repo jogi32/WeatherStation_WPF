@@ -113,7 +113,7 @@
             <ColumnDefinition Width="100*" />
             <ColumnDefinition Width="100*" />
         </Grid.ColumnDefinitions>
-        
+
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="20*"/>
@@ -122,7 +122,7 @@
                 <RowDefinition Height="20*"/>
                 <RowDefinition Height="20*"/>
             </Grid.RowDefinitions>
-            
+
             <ProgressBar Grid.Row="1" Template="{StaticResource ThermometerProgressBarStyle}"
         		Orientation="Vertical"
         		Minimum="10"
@@ -174,12 +174,128 @@
                 <RowDefinition Height="20*"/>
                 <RowDefinition Height="50*"/>
             </Grid.RowDefinitions>
-        <Ellipse Grid.Row="0"
-                     Width="50"
-                     Height="50"
-                     Stroke="Transparent" StrokeThickness="10"
-                     Fill="Bisque" />
+            <Ellipse Grid.Row="0"
+                     Width="45"
+                     Height="45"
+                     Stroke="SteelBlue" StrokeThickness="2" 
+                 >
+                <Ellipse.Fill>
+                    <LinearGradientBrush EndPoint="2,2" StartPoint="0,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="Blue" Offset="1"/>
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Label Grid.Row="1" Content="HumAir" FontFamily="SketchFlow Print" FontWeight="Bold" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="16"
+                   FontStretch="Expanded" >
+            </Label>
+            <Label Grid.Row="2" Content="NONE" Name="HumAirLabel" FontFamily="SketchFlow Print" FontWeight="Bold" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="16"
+                   FontStretch="Expanded" >
+            </Label>
+
+            <Grid Grid.Row="3" Grid.RowSpan="3">
+
+            </Grid>
         </Grid>
+
+
+        <Grid Grid.Column="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+            <Ellipse Grid.Row="0"
+                     Width="45"
+                     Height="45"
+                     Stroke="SteelBlue" StrokeThickness="2" 
+                 >
+                <Ellipse.Fill>
+                    <LinearGradientBrush EndPoint="2,2" StartPoint="0,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="Blue" Offset="1"/>
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Label Grid.Row="1" Content="HumEarth" FontFamily="SketchFlow Print" FontWeight="Bold" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="16"
+                   FontStretch="Expanded" >
+            </Label>
+            <Label Grid.Row="2" Content="NONE" Name="HumEarthLabel" FontFamily="SketchFlow Print" FontWeight="Bold" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="16"
+                   FontStretch="Expanded" >
+            </Label>
+        </Grid>
+
+
+        <Grid Grid.Column="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+            <Ellipse Grid.Row="0"
+                     Width="45"
+                     Height="45"
+                     Stroke="SteelBlue" StrokeThickness="2" 
+                 >
+                <Ellipse.Fill>
+                    <LinearGradientBrush EndPoint="2,2" StartPoint="0,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="Blue" Offset="1"/>
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Label Grid.Row="1" Content="HumRain" FontFamily="SketchFlow Print" FontWeight="Bold" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="16"
+                   FontStretch="Expanded" >
+            </Label>
+            <Label Grid.Row="2" Content="NONE" Name="HumRainLabel" FontFamily="SketchFlow Print" FontWeight="Bold" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="16"
+                   FontStretch="Expanded" >
+            </Label>
+        </Grid>
+
+
+        <Grid Grid.Column="6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions>
+
+            <ProgressBar Grid.Row="1" Template="{StaticResource ThermometerProgressBarStyle}"
+        		Orientation="Vertical"
+        		Minimum="10"
+        		Maximum="50"
+        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBar4" ValueChanged="ProgBar1_ValueChanged"  />
+        </Grid>
+
+
+        <Grid Grid.Column="7">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions>
+
+            <ProgressBar Grid.Row="1" Template="{StaticResource ThermometerProgressBarStyle}"
+        		Orientation="Vertical"
+        		Minimum="10"
+        		Maximum="50"
+        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBar5" ValueChanged="ProgBar1_ValueChanged"  />
+        </Grid>
+
 
         <StackPanel Grid.Column="0">
             <Menu Height="20" Width="120">
