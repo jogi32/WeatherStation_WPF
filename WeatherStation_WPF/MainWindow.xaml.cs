@@ -77,6 +77,8 @@ namespace WeatherStation_WPF
         private void AppExit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            DataChart.Close();
+            DataGraph.Close();
         }
     }
 
