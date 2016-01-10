@@ -9,7 +9,6 @@
         <!-- Define template for thermometer progress bar -->
         <ControlTemplate x:Key="ThermometerProgressBarStyle"
                      TargetType="{x:Type ProgressBar}">
-
             <!-- Define two brushes for the thermometer liquid -->
             <ControlTemplate.Resources>
                 <LinearGradientBrush x:Key="brushStem"
@@ -104,9 +103,6 @@
     </Window.Resources>
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100*" />
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100*" />
             <ColumnDefinition Width="100*" />
@@ -118,15 +114,74 @@
             <ColumnDefinition Width="100*" />
         </Grid.ColumnDefinitions>
         
-            <ProgressBar Grid.Row="0" Grid.Column="0" Template="{StaticResource ThermometerProgressBarStyle}"
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions>
+            
+            <ProgressBar Grid.Row="1" Template="{StaticResource ThermometerProgressBarStyle}"
         		Orientation="Vertical"
         		Minimum="10"
         		Maximum="50"
         		Width="50"
-        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBar1" Grid.RowSpan="2" ValueChanged="ProgBar1_ValueChanged"/>
+        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBar1" ValueChanged="ProgBar1_ValueChanged"/>
+        </Grid>
 
-        
-        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left">
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions>
+
+            <ProgressBar Grid.Row="1" Template="{StaticResource ThermometerProgressBarStyle}"
+        		Orientation="Vertical"
+        		Minimum="10"
+        		Maximum="50"
+        		Width="50"
+        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBar2" ValueChanged="ProgBar1_ValueChanged"/>
+        </Grid>
+
+
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions>
+
+            <ProgressBar Grid.Row="1" Template="{StaticResource ThermometerProgressBarStyle}"
+        		Orientation="Vertical"
+        		Minimum="10"
+        		Maximum="50"
+        		Width="50"
+        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBar3" ValueChanged="ProgBar1_ValueChanged"/>
+        </Grid>
+
+        <Grid Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+        <Ellipse Grid.Row="0"
+                     Width="50"
+                     Height="50"
+                     Stroke="Transparent" StrokeThickness="10"
+                     Fill="Bisque" />
+        </Grid>
+
+        <StackPanel Grid.Column="0">
             <Menu Height="20" Width="120">
                 <Menu.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
