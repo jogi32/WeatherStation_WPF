@@ -27,6 +27,7 @@ namespace WeatherStation_WPF
         public static Boolean i_humidityAlarm { get; set; }
         public static Boolean i_otherAlarm { get; set; }
 
+        public static UInt32 i_faultyConter { get; set; }
 
         public DataHolder() 
         {

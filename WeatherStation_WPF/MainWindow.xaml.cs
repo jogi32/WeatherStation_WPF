@@ -22,7 +22,7 @@ namespace WeatherStation_WPF
     {
         Window DataChart;
         Window DataGraph;
-        SerialPortController test;
+        SerialPortController serialController;
 
         public MainWindow()
         {
@@ -30,9 +30,11 @@ namespace WeatherStation_WPF
 
             DataChart = new DataChartWindow();
             DataGraph = new DataGraphWindow();
+
             DataGraph.Show();
             DataChart.Show();
-            test = new SerialPortController();
+
+            serialController = new SerialPortController();
         }
 
         private void But_Bt_Stop_Click(object sender, RoutedEventArgs e)
@@ -67,10 +69,9 @@ namespace WeatherStation_WPF
 
         private void DataChartWindow_Click(object sender, RoutedEventArgs e)
         {
+            DataChart.Close();
             DataChart = new DataChartWindow();
             DataChart.Show();
-
-            this.Close();
         }
 
         private void AppExit_Click(object sender, RoutedEventArgs e)

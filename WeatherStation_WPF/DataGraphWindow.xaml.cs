@@ -31,17 +31,26 @@ namespace WeatherStation_WPF
             showDataChart();
 
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 0, 0, 500);
+            timer.Interval = new TimeSpan(0, 0, 0, 1);
             timer.Tick += new EventHandler(timer_Tick);
             timer.IsEnabled = true;
         }
 
         void timer_Tick(object sender, EventArgs e)
         {
-            Temperature.Add(new KeyValuePair<Int32, double>(DateTime.Now.Second, DataHolder.i_temperature1));
-            Pressure.Add(new KeyValuePair<Int32, UInt64>(DateTime.Now.Second, DataHolder.i_pressureCalculated));
-            Humidity.Add(new KeyValuePair<Int32, double>(DateTime.Now.Second, DataHolder.i_humidityAir));
-            Radiance.Add(new KeyValuePair<Int32, UInt64>(DateTime.Now.Second, DataHolder.i_radianceCalculated));
+            Int32 seconds = DateTime.Now.Second;
+            if (seconds == 0)
+            {
+                Temperature.Clear();
+                Pressure.Clear();
+                Humidity.Clear();
+                Radiance.Clear();
+            }
+
+            Temperature.Add(new KeyValuePair<Int32, double>(seconds, DataHolder.i_temperature1));
+            Pressure.Add(new KeyValuePair<Int32, UInt64>(seconds, DataHolder.i_pressureCalculated));
+            Humidity.Add(new KeyValuePair<Int32, double>(seconds, DataHolder.i_humidityAir));
+            Radiance.Add(new KeyValuePair<Int32, UInt64>(seconds, DataHolder.i_radianceCalculated));
         }
 
         private void showDataChart()

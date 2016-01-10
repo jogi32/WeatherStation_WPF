@@ -25,13 +25,19 @@ namespace WeatherStation_WPF
             InitializeComponent();
 
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 0, 0, 500);  // per 1 seconds,
+            timer.Interval = new TimeSpan(0, 0, 0, 1);  // per 1 seconds,
             timer.Tick += new EventHandler(timer_Tick);
             timer.IsEnabled = true;
         }
 
+        ~DataChartWindow()
+        {
+        }
+
         void timer_Tick(object sender, EventArgs e)
         {
+            DataHolder.i_faultyConter++;
+
             Temp1.Content = DataHolder.i_temperature1.ToString();
             Temp2.Content = DataHolder.i_temperature2.ToString();
             Temp3.Content = DataHolder.i_temperature3.ToString();
@@ -69,6 +75,13 @@ namespace WeatherStation_WPF
             else
             {
                 Alarm_Other.Fill = new SolidColorBrush(Colors.Green);
+            }
+
+            if (DataHolder.i_faultyConter > 10)
+            {
+                Alarm_Temp.Fill = new SolidColorBrush(Colors.Red);
+                Alarm_Hum.Fill = new SolidColorBrush(Colors.Red);
+                Alarm_Other.Fill = new SolidColorBrush(Colors.Red);
             }
         }
     }

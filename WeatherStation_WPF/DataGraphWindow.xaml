@@ -3,12 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:DV="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
         xmlns:DVC="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
-        Title="DataLogger" Height="480" Width="800"
         xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
         xmlns:charting="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
         xmlns:datavis="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
-        xmlns:chartingprimitives="clr-namespace:System.Windows.Controls.DataVisualization.Charting.Primitives;assembly=System.Windows.Controls.DataVisualization.Toolkit">
-    <Grid Background="#FFB7BB12">
+        xmlns:chartingprimitives="clr-namespace:System.Windows.Controls.DataVisualization.Charting.Primitives;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        Title="DataLogger" Height="480" Width="800">
+    <Grid Background="Aquamarine">
         <Grid.RowDefinitions>
             <RowDefinition Height="100*" />
             <RowDefinition Height="100*" />
@@ -58,7 +58,7 @@
                     <chartingToolkit:LinearAxis Orientation="X" Title="Time (s)" Interval="10" Minimum="0" Maximum="60"/>
                 </chartingToolkit:AreaSeries.IndependentAxis>
                 <chartingToolkit:AreaSeries.DependentRangeAxis>
-                    <chartingToolkit:LinearAxis Orientation="Y" Title="TCiśnienie (hPa)" Minimum="900" Maximum="1100"/>
+                    <chartingToolkit:LinearAxis Orientation="Y" Title="Pressure (hPa)" Minimum="900" Maximum="1100"/>
                 </chartingToolkit:AreaSeries.DependentRangeAxis>
             </chartingToolkit:AreaSeries>
         </chartingToolkit:Chart>

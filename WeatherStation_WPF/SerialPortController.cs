@@ -11,16 +11,17 @@ namespace WeatherStation_WPF
 {
     class SerialPortController
     {
-        static SerialPort serialPort1 = new SerialPort("COM5", 9600);
+        static SerialPort   i_serialPort1 = new SerialPort("COM5", 9600);
+        private String      i_dataBufor = "";
 
         public SerialPortController() 
         {
-            
-            serialPort1.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
-            serialPort1.ReadTimeout = 50;
+
+            i_serialPort1.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+            i_serialPort1.ReadTimeout = 50;
             try
             {
-                serialPort1.Open();
+                //i_serialPort1.Open();
             }
             catch
             {
@@ -30,18 +31,22 @@ namespace WeatherStation_WPF
 
         ~SerialPortController()
         {
-            if (!(serialPort1 == null))
+            if (!(i_serialPort1 == null))
             {
-                if (serialPort1.IsOpen)
+                if (i_serialPort1.IsOpen)
                 {
-                    serialPort1.Close();
+                    i_serialPort1.Close();
                 }
             }   
         }
 
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
+            DataHolder.i_faultyConter = 0;
+
             SerialPort sp = (SerialPort)sender;
+            i_dataBufor = sp.ReadLine();
+
             try
             {
                 sp.ReadTo(" ");
