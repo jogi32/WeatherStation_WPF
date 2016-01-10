@@ -272,7 +272,8 @@
                 
                 
                 <Grid Grid.Row="0">
-                    <ProgressBar Minimum="0" Maximum="100" Value="75" Name="pbStatus" Foreground="SandyBrown" />
+                    <ProgressBar Minimum="0" Maximum="100" Value="75" Name="pbStatus" Foreground="SandyBrown" 
+                                 BorderBrush="Red" BorderThickness="2" Background="Cornsilk"/>
                     <TextBlock Text="{Binding ElementName=pbStatus, Path=Value, StringFormat={}{0:0}%}" 
                                HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Grid>
@@ -293,6 +294,7 @@
         		Orientation="Vertical"
         		Minimum="10"
         		Maximum="50"
+                Background="Aquamarine"
         		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBar4" ValueChanged="ProgBar1_ValueChanged"  />
         </Grid>
 
