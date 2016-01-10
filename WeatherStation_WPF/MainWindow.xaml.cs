@@ -31,8 +31,8 @@ namespace WeatherStation_WPF
             DataChart = new DataChartWindow();
             DataGraph = new DataGraphWindow();
 
-            DataGraph.Show();
-            DataChart.Show();
+            //DataGraph.Show();
+            //DataChart.Show();
 
             serialController = new SerialPortController();
         }

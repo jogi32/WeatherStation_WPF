@@ -143,7 +143,6 @@
                     <ColumnDefinition Width="50*" />
                     <ColumnDefinition Width="50*" />
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" HorizontalAlignment="Center" FontFamily="Arial" FontWeight="Black" Margin="10,14,117.6,0">Temp:</Label>
             </Grid>
 
             <Grid Grid.Row="2" Height="48" Margin="0,0,-0.2,-0.2" VerticalAlignment="Bottom">
@@ -152,9 +151,6 @@
                     <ColumnDefinition Width="142*"/>
                     <ColumnDefinition Width="178*" />
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="2" HorizontalAlignment="Center" FontFamily="Arial" FontWeight="Black" Margin="38.4,0,97,0">Hum:</Label>
-                <Label Grid.Column="2" Name="Hum1"  HorizontalAlignment="Center" FontFamily="Arial" FontWeight="Black" Content="NONE" Margin="86.4,0,44,0"></Label>
-                <Label x:Name="Temp1"  HorizontalAlignment="Center" FontFamily="Arial" FontWeight="Black" Content="NONE" Margin="10,3,119.6,10" Grid.ColumnSpan="2"/>
             </Grid>
             <ProgressBar Grid.Row="0" Template="{StaticResource ThermometerProgressBarStyle}"
             	Orientation="Vertical"

@@ -20,7 +20,7 @@ namespace WeatherStation_WPF
             i_serialPort1.ReadTimeout = 50;
             try
             {
-                i_serialPort1.Open();
+                //i_serialPort1.Open();
             }
             catch
             {
