@@ -25,7 +25,7 @@ namespace WeatherStation_WPF
             InitializeComponent();
 
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 0, 1);  // per 1 seconds,
+            timer.Interval = new TimeSpan(0, 0, 0, 1);
             timer.Tick += new EventHandler(timer_Tick);
             timer.IsEnabled = true;
         }
@@ -38,17 +38,17 @@ namespace WeatherStation_WPF
         {
             DataHolder.i_faultyConter++;
 
-            Temp1.Content = DataHolder.i_temperature1.ToString();
-            Temp2.Content = DataHolder.i_temperature2.ToString();
-            Temp3.Content = DataHolder.i_temperature3.ToString();
+            Temp1.Content = DataHolder.i_temperature1.ToString() + " *C";
+            Temp2.Content = DataHolder.i_temperature2.ToString() + " *C";
+            Temp3.Content = DataHolder.i_temperature3.ToString() + " *C";
 
-            HumAir.Content = DataHolder.i_humidityAir.ToString();
-            HumEarth.Content = DataHolder.i_humidityEarth.ToString();
-            HumRain.Content = DataHolder.i_humidityRain.ToString();
+            HumAir.Content      = DataHolder.i_humidityAir.ToString() + " %";
+            HumEarth.Content    = DataHolder.i_humidityEarth.ToString() + " %";
+            HumRain.Content     = DataHolder.i_humidityRain.ToString() + " %";
 
-            Lux.Content = DataHolder.i_radianceCalculated.ToString();
-            Height1.Content = DataHolder.i_heightCalculated.ToString();
-            Pressure.Content = DataHolder.i_pressureCalculated.ToString();
+            Lux.Content         = DataHolder.i_radianceCalculated.ToString() + " Lux";
+            Height1.Content     = DataHolder.i_heightCalculated.ToString("0.0")  + " m";
+            Pressure.Content    = DataHolder.i_pressureCalculated.ToString() + " hPa";
 
             if ( DataHolder.i_temperatureAlarm)
             {

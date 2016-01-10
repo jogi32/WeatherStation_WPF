@@ -12,7 +12,6 @@ namespace WeatherStation_WPF
     class SerialPortController
     {
         static SerialPort   i_serialPort1 = new SerialPort("COM5", 9600);
-        private String      i_dataBufor = "";
 
         public SerialPortController() 
         {
@@ -21,7 +20,7 @@ namespace WeatherStation_WPF
             i_serialPort1.ReadTimeout = 50;
             try
             {
-                //i_serialPort1.Open();
+                i_serialPort1.Open();
             }
             catch
             {
@@ -45,7 +44,6 @@ namespace WeatherStation_WPF
             DataHolder.i_faultyConter = 0;
 
             SerialPort sp = (SerialPort)sender;
-            i_dataBufor = sp.ReadLine();
 
             try
             {
@@ -104,6 +102,8 @@ namespace WeatherStation_WPF
                 DataHolder.i_pressureLow = UInt32.Parse(sp.ReadTo(" "));
                 DataHolder.i_pressureCalculated = ((DataHolder.i_pressureHight << 8) + DataHolder.i_pressureLow)/100;
                 DataHolder.i_otherAlarm = false;
+
+                DataHolder.i_heightCalculated = 44330 * (1 - Math.Pow((DataHolder.i_pressureCalculated / DataHolder.i_pressureInSeaArea), (1 / 5.255)));
             }
             catch { DataHolder.i_otherAlarm = true; }
             
