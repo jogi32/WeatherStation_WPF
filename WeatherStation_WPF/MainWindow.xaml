@@ -88,7 +88,6 @@
                      Stroke="Transparent" StrokeThickness="6"
                      Fill="{StaticResource brushBowl}" />
             </Grid>
-
             <!--add Orientation trigger-->
             <ControlTemplate.Triggers>
                 <Trigger Property="Orientation" Value="Vertical">
@@ -102,6 +101,9 @@
         </ControlTemplate>
     </Window.Resources>
 
+    
+    
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100*" />
@@ -126,7 +128,19 @@
         		Minimum="10"
         		Maximum="50"
         		Width="50"
-        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBar1" ValueChanged="ProgBar1_ValueChanged"/>
+        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBarT1" ValueChanged="ProgBar1_ValueChanged"/>
+            <Label Grid.Row="2" Content="T1" FontFamily="SketchFlow Print" FontWeight="Bold" 
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="16"
+                            FontStretch="Expanded" >
+            </Label>
+            <Label Grid.Row="3" Content="NONE" Name="T1Value" FontFamily="SketchFlow Print" FontWeight="Bold" 
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="16"
+                            FontStretch="Expanded" >
+            </Label>
+            <Button Grid.Row="4" Content="Connect" Name="ButtonConnect" FontFamily="SketchFlow Print" FontWeight="Bold" 
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="10"
+                            FontStretch="Expanded" >
+            </Button>
         </Grid>
 
         <Grid Grid.Column="1">
@@ -143,7 +157,19 @@
         		Minimum="10"
         		Maximum="50"
         		Width="50"
-        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBar2" ValueChanged="ProgBar1_ValueChanged"/>
+        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBarT2" ValueChanged="ProgBar1_ValueChanged"/>
+            <Label Grid.Row="2" Content="T2" FontFamily="SketchFlow Print" FontWeight="Bold" 
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="16"
+                            FontStretch="Expanded" >
+            </Label>
+            <Label Grid.Row="3" Content="NONE" Name="T2Value" FontFamily="SketchFlow Print" FontWeight="Bold" 
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="16"
+                            FontStretch="Expanded" >
+            </Label>
+            <Button Grid.Row="4" Content="DisConnect" Name="ButtonDisConnect" FontFamily="SketchFlow Print" FontWeight="Bold" 
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="10"
+                            FontStretch="Expanded" >
+            </Button>
         </Grid>
 
 
@@ -161,7 +187,20 @@
         		Minimum="10"
         		Maximum="50"
         		Width="50"
-        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBar3" ValueChanged="ProgBar1_ValueChanged"/>
+        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBarT3" ValueChanged="ProgBar1_ValueChanged"/>
+            <Label Grid.Row="2" Content="T3" FontFamily="SketchFlow Print" FontWeight="Bold" 
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="16"
+                            FontStretch="Expanded" >
+            </Label>
+            <Label Grid.Row="3" Content="NONE" Name="T3Value" FontFamily="SketchFlow Print" FontWeight="Bold" 
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="16"
+                            FontStretch="Expanded" >
+            </Label>
+            <TextBox Grid.Row="4" Name="portCom" FontFamily="SketchFlow Print" FontWeight="Bold" 
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="16"
+                            Width="50">
+                
+            </TextBox>
         </Grid>
 
         <Grid Grid.Column="3">
@@ -273,11 +312,20 @@
                 
                 <Grid Grid.Row="0">
                     <ProgressBar Minimum="0" Maximum="100" Value="75" Name="pbStatus" Foreground="SandyBrown" 
-                                 BorderBrush="Red" BorderThickness="2" Background="Cornsilk"/>
+                                 BorderBrush="Red" BorderThickness="2" Background="GreenYellow"/>
                     <TextBlock Text="{Binding ElementName=pbStatus, Path=Value, StringFormat={}{0:0}%}" 
                                HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Grid>
-                     
+                
+                <Label Grid.Row="1" Content="Radiance" FontFamily="SketchFlow Print" FontWeight="Bold" 
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="16"
+                            FontStretch="Expanded" >
+                </Label>
+                <Label Grid.Row="2" Content="NONE" Name="RadianceValue" FontFamily="SketchFlow Print" FontWeight="Bold" 
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="16"
+                            FontStretch="Expanded" >
+                </Label>
+
             </Grid>
         </Grid>
 
@@ -292,10 +340,18 @@
 
             <ProgressBar Grid.Row="1" Template="{StaticResource ThermometerProgressBarStyle}"
         		Orientation="Vertical"
-        		Minimum="10"
-        		Maximum="50"
+        		Minimum="950"
+        		Maximum="1100"
                 Background="Aquamarine"
-        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBar4" ValueChanged="ProgBar1_ValueChanged"  />
+        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBarPressure" ValueChanged="ProgBar1_ValueChanged"  />
+            <Label Grid.Row="2" Content="Pressure" FontFamily="SketchFlow Print" FontWeight="Bold" 
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="12"
+                            FontStretch="Expanded" >
+            </Label>
+            <Label Grid.Row="3" Content="NONE" Name="PressureValue" FontFamily="SketchFlow Print" FontWeight="Bold" 
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="16"
+                            FontStretch="Expanded" >
+            </Label>
         </Grid>
 
 
@@ -310,9 +366,18 @@
 
             <ProgressBar Grid.Row="1" Template="{StaticResource ThermometerProgressBarStyle}"
         		Orientation="Vertical"
-        		Minimum="10"
-        		Maximum="50"
-        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBar5" ValueChanged="ProgBar1_ValueChanged"  />
+        		Minimum="0"
+        		Maximum="1000"
+                Background="Aquamarine"
+        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBarHeight" ValueChanged="ProgBar1_ValueChanged"  />
+            <Label Grid.Row="2" Content="Height" FontFamily="SketchFlow Print" FontWeight="Bold" 
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="12"
+                            FontStretch="Expanded" >
+            </Label>
+            <Label Grid.Row="3" Content="NONE" Name="HeightValue" FontFamily="SketchFlow Print" FontWeight="Bold" 
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="16"
+                            FontStretch="Expanded" >
+            </Label>
         </Grid>
 
 
