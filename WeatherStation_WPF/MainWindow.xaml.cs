@@ -53,9 +53,35 @@ namespace WeatherStation_WPF
             ProgBarPressure.Value   = DataHolder.i_pressureCalculated;
             PressureValue.Content   = DataHolder.i_pressureCalculated.ToString();
             ProgBarHeight.Value     = DataHolder.i_heightCalculated;
-            HeightValue.Content     = DataHolder.i_heightCalculated;
+            HeightValue.Content     = DataHolder.i_heightCalculated.ToString("0.0");
             pbStatus.Value          = DataHolder.i_radianceCalculated / 10;
             RadianceValue.Content   = DataHolder.i_radianceCalculated.ToString();
+
+            // Set Fill property of rectangle
+            HumAirElipse.Fill = ElepseFillBrush(DataHolder.i_humidityAir / 100.0);
+            HumEarthElipse.Fill = ElepseFillBrush(DataHolder.i_humidityEarth / 100.0);
+            HumRainElipse.Fill = ElepseFillBrush(DataHolder.i_humidityRain / 100.0);
+        }
+
+        private LinearGradientBrush ElepseFillBrush(double humidity_)
+        {
+            // Create a linear gradient brush with two stops 
+            LinearGradientBrush BrushColor = new LinearGradientBrush();
+            BrushColor.StartPoint = new Point(0, 0);
+            BrushColor.EndPoint = new Point(1, 1);
+
+            // Create and add Gradient stops
+            GradientStop whiteGS = new GradientStop();
+            whiteGS.Color = Colors.White;
+            whiteGS.Offset = 0.0;
+            BrushColor.GradientStops.Add(whiteGS);
+
+            GradientStop blueGS = new GradientStop();
+            blueGS.Color = Colors.Blue;
+            blueGS.Offset = 1.0 - humidity_;
+            BrushColor.GradientStops.Add(blueGS);
+
+            return BrushColor;
         }
             
 
