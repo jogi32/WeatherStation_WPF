@@ -30,13 +30,5 @@ namespace WeatherStation_WPF
         public static UInt32 i_faultyConter { get; set; }
 
         public const UInt32 i_pressureInSeaArea = 1013;
-
-        public DataHolder() 
-        {
-        }
-
-        ~DataHolder()
-        {
-        }
     }
 }

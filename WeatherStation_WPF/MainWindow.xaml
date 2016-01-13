@@ -1,7 +1,8 @@
 ﻿<Window x:Class="WeatherStation_WPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="750">
+        Title="MainWindow" Height="350" Width="750"
+        Icon="Additional/Thunderstorm-Icon.png">
     <Window.Background>
         <ImageBrush ImageSource="additional/chmury.jpg"></ImageBrush>
     </Window.Background>
@@ -128,7 +129,7 @@
         		Minimum="10"
         		Maximum="50"
         		Width="50"
-        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBarT1" ValueChanged="ProgBar1_ValueChanged"/>
+        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBarT1"/>
             <Label Grid.Row="2" Content="T1" FontFamily="SketchFlow Print" FontWeight="Bold" 
                             HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="16"
                             FontStretch="Expanded" >
@@ -139,7 +140,7 @@
             </Label>
             <Button Grid.Row="4" Content="Connect" Name="ButtonConnect" FontFamily="SketchFlow Print" FontWeight="Bold" 
                             HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="10"
-                            FontStretch="Expanded" >
+                            FontStretch="Expanded" Click="ButtonConnect_Click">
             </Button>
         </Grid>
 
@@ -157,7 +158,7 @@
         		Minimum="10"
         		Maximum="50"
         		Width="50"
-        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBarT2" ValueChanged="ProgBar1_ValueChanged"/>
+        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBarT2"/>
             <Label Grid.Row="2" Content="T2" FontFamily="SketchFlow Print" FontWeight="Bold" 
                             HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="16"
                             FontStretch="Expanded" >
@@ -168,7 +169,7 @@
             </Label>
             <Button Grid.Row="4" Content="DisConnect" Name="ButtonDisConnect" FontFamily="SketchFlow Print" FontWeight="Bold" 
                             HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="10"
-                            FontStretch="Expanded" >
+                            FontStretch="Expanded" Click="ButtonDisConnect_Click">
             </Button>
         </Grid>
 
@@ -187,7 +188,7 @@
         		Minimum="10"
         		Maximum="50"
         		Width="50"
-        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBarT3" ValueChanged="ProgBar1_ValueChanged"/>
+        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBarT3"/>
             <Label Grid.Row="2" Content="T3" FontFamily="SketchFlow Print" FontWeight="Bold" 
                             HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="16"
                             FontStretch="Expanded" >
@@ -198,7 +199,7 @@
             </Label>
             <TextBox Grid.Row="4" Name="portCom" FontFamily="SketchFlow Print" FontWeight="Bold" 
                             HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="16"
-                            Width="50">
+                            Width="50" Text="COM5">
                 
             </TextBox>
         </Grid>
@@ -343,7 +344,7 @@
         		Minimum="950"
         		Maximum="1100"
                 Background="Aquamarine"
-        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBarPressure" ValueChanged="ProgBar1_ValueChanged"  />
+        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBarPressure"/>
             <Label Grid.Row="2" Content="Pressure" FontFamily="SketchFlow Print" FontWeight="Bold" 
                             HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="12"
                             FontStretch="Expanded" >
@@ -369,7 +370,7 @@
         		Minimum="0"
         		Maximum="1000"
                 Background="Aquamarine"
-        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBarHeight" ValueChanged="ProgBar1_ValueChanged"  />
+        		Value="{Binding Value, ElementName=scroll}" x:Name="ProgBarHeight"/>
             <Label Grid.Row="2" Content="Height" FontFamily="SketchFlow Print" FontWeight="Bold" 
                             HorizontalAlignment="Center" VerticalAlignment="Center" Background="Azure" FontSize="12"
                             FontStretch="Expanded" >

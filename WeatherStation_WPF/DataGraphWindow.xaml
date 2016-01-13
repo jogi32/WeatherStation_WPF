@@ -7,7 +7,8 @@
         xmlns:charting="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
         xmlns:datavis="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
         xmlns:chartingprimitives="clr-namespace:System.Windows.Controls.DataVisualization.Charting.Primitives;assembly=System.Windows.Controls.DataVisualization.Toolkit"
-        Title="DataLogger" Height="480" Width="800">
+        Title="DataLogger" Height="480" Width="800"
+        Icon="Additional/Thunderstorm-Icon.png">
     <Grid Background="Aquamarine">
         <Grid.RowDefinitions>
             <RowDefinition Height="100*" />

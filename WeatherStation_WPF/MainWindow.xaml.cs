@@ -24,6 +24,8 @@ namespace WeatherStation_WPF
         Window DataGraph;
         SerialPortController serialController;
 
+
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
         public MainWindow()
         {
             InitializeComponent();
@@ -42,27 +44,59 @@ namespace WeatherStation_WPF
             timer.IsEnabled = true;
         }
 
+
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
         void timer_Tick(object sender, EventArgs e)
         {
-            ProgBarT1.Value         = DataHolder.i_temperature1;
-            T1Value.Content         = DataHolder.i_temperature1.ToString();
-            ProgBarT2.Value         = DataHolder.i_temperature2;
-            T2Value.Content         = DataHolder.i_temperature2.ToString();
-            ProgBarT3.Value         = DataHolder.i_temperature3;
-            T3Value.Content         = DataHolder.i_temperature3.ToString();
-            ProgBarPressure.Value   = DataHolder.i_pressureCalculated;
-            PressureValue.Content   = DataHolder.i_pressureCalculated.ToString();
-            ProgBarHeight.Value     = DataHolder.i_heightCalculated;
-            HeightValue.Content     = DataHolder.i_heightCalculated.ToString("0.0");
-            pbStatus.Value          = DataHolder.i_radianceCalculated / 10;
-            RadianceValue.Content   = DataHolder.i_radianceCalculated.ToString();
+            setDataOnGrid();
+
+            serialPortReopenIfFailed();
+        }
+
+
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
+        private void serialPortReopenIfFailed()
+        {
+            if (DataHolder.i_faultyConter > 20)
+            {
+                if (ButtonDisConnect.IsEnabled)
+                {
+                    DataHolder.i_faultyConter = 10;
+                    serialController.i_serialPort1.Close();
+                    serialController = new SerialPortController();
+                }
+            }
+        }
+
+
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
+        private void setDataOnGrid()
+        {
+            ProgBarT1.Value = DataHolder.i_temperature1;
+            T1Value.Content = DataHolder.i_temperature1.ToString();
+            ProgBarT2.Value = DataHolder.i_temperature2;
+            T2Value.Content = DataHolder.i_temperature2.ToString();
+            ProgBarT3.Value = DataHolder.i_temperature3;
+            T3Value.Content = DataHolder.i_temperature3.ToString();
+            ProgBarPressure.Value = DataHolder.i_pressureCalculated;
+            PressureValue.Content = DataHolder.i_pressureCalculated.ToString();
+            ProgBarHeight.Value = DataHolder.i_heightCalculated;
+            HeightValue.Content = DataHolder.i_heightCalculated.ToString("0.0");
+            pbStatus.Value = DataHolder.i_radianceCalculated / 10;
+            RadianceValue.Content = DataHolder.i_radianceCalculated.ToString();
 
             // Set Fill property of rectangle
             HumAirElipse.Fill = ElepseFillBrush(DataHolder.i_humidityAir / 100.0);
             HumEarthElipse.Fill = ElepseFillBrush(DataHolder.i_humidityEarth / 100.0);
             HumRainElipse.Fill = ElepseFillBrush(DataHolder.i_humidityRain / 100.0);
+
+            HumAirLabel.Content = DataHolder.i_humidityAir.ToString("0.0");
+            HumEarthLabel.Content = DataHolder.i_humidityEarth.ToString("0.0");
+            HumRainLabel.Content = DataHolder.i_humidityRain.ToString("0.0");
         }
 
+
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
         private LinearGradientBrush ElepseFillBrush(double humidity_)
         {
             // Create a linear gradient brush with two stops 
@@ -83,38 +117,37 @@ namespace WeatherStation_WPF
 
             return BrushColor;
         }
-            
 
-        private void But_Bt_Stop_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
-
-        private void But_Bt_Start_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ProgBar1_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            
-        }
-
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
         private void About_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Author\n Tomasz Szafrański");
         }
 
+
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
         private void DataGraphWindow_Click(object sender, RoutedEventArgs e)
         {
-
+            DataGraph.Close();
+            DataGraph = new DataGraphWindow();
+            DataGraph.Show();
         }
 
+
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
         private void ProgresBarWIndow_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow newWindow = new MainWindow();
+            newWindow.Show();
+            DataChart.Close();
+            DataGraph.Close();
 
+            this.Close();
         }
 
+
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
         private void DataChartWindow_Click(object sender, RoutedEventArgs e)
         {
             DataChart.Close();
@@ -122,11 +155,58 @@ namespace WeatherStation_WPF
             DataChart.Show();
         }
 
+
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
         private void AppExit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             DataChart.Close();
             DataGraph.Close();
+        }
+
+
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
+        private void ButtonConnect_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (!serialController.i_serialPort1.IsOpen)
+                {
+                    ButtonConnect.IsEnabled = false;
+                    ButtonDisConnect.IsEnabled = true;
+                    setDataStats();
+                    serialController.i_serialPort1.Open();
+                    serialController.i_serialPort1.DiscardInBuffer();
+                    MessageBox.Show("Otwarto Port");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Błąd otwarcia portu");
+                serialController.i_serialPort1.Close();
+                ButtonConnect.IsEnabled = true;
+                ButtonDisConnect.IsEnabled = false;
+            }
+        }
+
+
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
+        private void setDataStats()
+        {
+            serialController.i_serialPort1.PortName = this.portCom.Text;
+            serialController.i_serialPort1.BaudRate = 9600;
+            serialController.i_serialPort1.StopBits = StopBits.One;
+            serialController.i_serialPort1.DataBits = 8;
+            serialController.i_serialPort1.Parity = Parity.None;
+        }
+
+
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
+        private void ButtonDisConnect_Click(object sender, RoutedEventArgs e)
+        {
+            serialController.i_serialPort1.Close();
+            ButtonConnect.IsEnabled = true;
+            ButtonDisConnect.IsEnabled = false;
         }
     }
 

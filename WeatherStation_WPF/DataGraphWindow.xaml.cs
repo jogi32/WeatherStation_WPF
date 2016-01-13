@@ -25,6 +25,8 @@ namespace WeatherStation_WPF
         ObservableCollection<KeyValuePair<Int32, double>> Humidity      = new ObservableCollection<KeyValuePair<Int32, double>>();
         ObservableCollection<KeyValuePair<Int32, UInt64>> Radiance      = new ObservableCollection<KeyValuePair<Int32, UInt64>>();
 
+
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
         public DataGraphWindow()
         {
             InitializeComponent();
@@ -36,23 +38,41 @@ namespace WeatherStation_WPF
             timer.IsEnabled = true;
         }
 
+
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
         void timer_Tick(object sender, EventArgs e)
         {
             Int32 seconds = DateTime.Now.Second;
             if (seconds == 0)
             {
-                Temperature.Clear();
-                Pressure.Clear();
-                Humidity.Clear();
-                Radiance.Clear();
+                chartValueClear();
             }
 
+            chartValueUpdate(seconds);
+        }
+
+
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
+        private void chartValueClear()
+        {
+            Temperature.Clear();
+            Pressure.Clear();
+            Humidity.Clear();
+            Radiance.Clear();
+        }
+
+
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
+        private void chartValueUpdate(Int32 seconds)
+        {
             Temperature.Add(new KeyValuePair<Int32, double>(seconds, DataHolder.i_temperature1));
             Pressure.Add(new KeyValuePair<Int32, double>(seconds, DataHolder.i_pressureCalculated));
             Humidity.Add(new KeyValuePair<Int32, double>(seconds, DataHolder.i_humidityAir));
             Radiance.Add(new KeyValuePair<Int32, UInt64>(seconds, DataHolder.i_radianceCalculated));
         }
 
+
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
         private void showDataChart()
         {
             TemperatureChart.DataContext = Temperature;

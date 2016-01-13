@@ -20,6 +20,7 @@ namespace WeatherStation_WPF
     /// </summary>
     public partial class DataChartWindow : Window
     {
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
         public DataChartWindow()
         {
             InitializeComponent();
@@ -30,27 +31,22 @@ namespace WeatherStation_WPF
             timer.IsEnabled = true;
         }
 
-        ~DataChartWindow()
-        {
-        }
 
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
         void timer_Tick(object sender, EventArgs e)
         {
             DataHolder.i_faultyConter++;
 
-            Temp1.Content = DataHolder.i_temperature1.ToString() + " *C";
-            Temp2.Content = DataHolder.i_temperature2.ToString() + " *C";
-            Temp3.Content = DataHolder.i_temperature3.ToString() + " *C";
+            dataLabelUpdate();
 
-            HumAir.Content      = DataHolder.i_humidityAir.ToString() + " %";
-            HumEarth.Content    = DataHolder.i_humidityEarth.ToString() + " %";
-            HumRain.Content     = DataHolder.i_humidityRain.ToString() + " %";
+            alarmUpdate();
+        }
 
-            Lux.Content         = DataHolder.i_radianceCalculated.ToString() + " Lux";
-            Height1.Content     = DataHolder.i_heightCalculated.ToString("0.0")  + " m";
-            Pressure.Content    = DataHolder.i_pressureCalculated.ToString() + " hPa";
 
-            if ( DataHolder.i_temperatureAlarm)
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
+        private void alarmUpdate()
+        {
+            if (DataHolder.i_temperatureAlarm)
             {
                 Alarm_Temp.Fill = new SolidColorBrush(Colors.Red);
             }
@@ -83,6 +79,23 @@ namespace WeatherStation_WPF
                 Alarm_Hum.Fill = new SolidColorBrush(Colors.Red);
                 Alarm_Other.Fill = new SolidColorBrush(Colors.Red);
             }
+        }
+
+
+        //--------//--------//--------//--------//--------//--------//--------//--------//--------
+        private void dataLabelUpdate()
+        {
+            Temp1.Content = DataHolder.i_temperature1.ToString("0.0") + " *C";
+            Temp2.Content = DataHolder.i_temperature2.ToString("0.0") + " *C";
+            Temp3.Content = DataHolder.i_temperature3.ToString("0.0") + " *C";
+
+            HumAir.Content = DataHolder.i_humidityAir.ToString("0.0") + " %";
+            HumEarth.Content = DataHolder.i_humidityEarth.ToString("0.0") + " %";
+            HumRain.Content = DataHolder.i_humidityRain.ToString("0.0") + " %";
+
+            Lux.Content = DataHolder.i_radianceCalculated.ToString("0.0") + " Lux";
+            Height1.Content = DataHolder.i_heightCalculated.ToString("0.0") + " m";
+            Pressure.Content = DataHolder.i_pressureCalculated.ToString("0.0") + " hPa";
         }
     }
 }

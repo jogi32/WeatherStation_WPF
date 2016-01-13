@@ -1,7 +1,8 @@
 ﻿<Window x:Class="WeatherStation_WPF.DataChartWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="DataChartWindow" Height="512" Width="1024">
+        Title="DataChartWindow" Height="512" Width="1024"
+        Icon="Additional/Thunderstorm-Icon.png">
     <Window.Background>
         <ImageBrush ImageSource="additional/lightning.jpg"></ImageBrush>
     </Window.Background>
